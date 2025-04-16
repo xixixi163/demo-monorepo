@@ -192,4 +192,7 @@ https://registry.npmmirror.com/
 
 pnpm config set registry https://registry.npmjs.org/
 
+### CI github actions
+https://turbo.build/docs/guides/ci-vendors/github-actions
+
 
