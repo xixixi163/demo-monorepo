@@ -1,9 +1,13 @@
 {
   "name": "@repo/math",
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc",
+    "build:tsc": "tsc",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
     "test": "jest"
   },
   "exports": {

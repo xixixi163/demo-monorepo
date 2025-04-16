@@ -176,3 +176,7 @@ turbo query
 
 ### math 包 使用tsup 打包
 pnpm add tsup -D -w 在根目录安装
+配置package.json
+配置tsconfig.json
+配置tsup.config.ts
+新增入口 index.ts
