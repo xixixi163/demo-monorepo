@@ -1,14 +1,19 @@
 {
-  "name": "@repo/math",
+  "name": "@yixixi/math",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "tsc --watch",
+    "dev:tsc": "tsc --watch",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
     "build:tsc": "tsc",
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "exports": {
     "./add": {

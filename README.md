@@ -101,10 +101,10 @@ pnpm up --recursive typescript@latest
 turborepo syncpack、、manypkg和等工具sherif可用于此特定目的。
 ### 创建内部包
 packages/math
-packages.exports：为包定义多个入口点，以便它可以在其他包中使用（import { add } from '@repo/math'）
+packages.exports：为包定义多个入口点，以便它可以在其他包中使用（import { add } from '@yixixi/math'）
 - 将新的包安装在web
-pnpm add @repo/math -S --filter=web
-pnpm uninstall @repo/math -D --filter=web
+pnpm add @yixixi/math -S --filter=web
+pnpm uninstall @yixixi/math -D --filter=web
 
 pnpm add pkg 会去远端下载,使用 pnpm add b --workspace 会去本地的 workspace 中下载，或在 package.json 中添加 "workspace:*"
 
@@ -180,3 +180,16 @@ pnpm add tsup -D -w 在根目录安装
 配置tsconfig.json
 配置tsup.config.ts
 新增入口 index.ts
+
+### 发布 到npm
+pnpm add changeset -D -w
+
+pnpm add @changesets/cli -D -w
+
+npx changeset init
+
+https://registry.npmmirror.com/
+
+pnpm config set registry https://registry.npmjs.org/
+
+
