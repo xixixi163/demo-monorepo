@@ -1,6 +1,7 @@
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
+import { add } from '@repo/math/add';
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
@@ -18,7 +19,7 @@ const ThemeImage = (props: Props) => {
   );
 };
 
-export default function Home() {
+function Home() {
   return (
     <div className={styles.page}>
       Web
@@ -101,3 +102,7 @@ export default function Home() {
     </div>
   );
 }
+function Page() {
+  return <div>{add(1, 2)}</div>
+}
+export default Page;
