@@ -107,6 +107,12 @@ pnpm add @repo/math -S --filter=web
 pnpm uninstall @repo/math -D --filter=web
 
 pnpm add pkg 会去远端下载,使用 pnpm add b --workspace 会去本地的 workspace 中下载，或在 package.json 中添加 "workspace:*"
+
+- 新增jest的test命令
+- 在turbo 中配置test命令，才可以使用tur执行所有的test命令
+
 ### 在 web 中使用 math 包
-
-
+引入add方法并使用
+### 配置产物路径
+在 turbo.json 中配置任务编排。build 新增 math 打包产物的路径。确保其构建产物将被 Turborepo 缓存
+task.build.outputs: ['./dist/**']
