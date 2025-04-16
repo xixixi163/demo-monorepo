@@ -116,3 +116,63 @@ pnpm add pkg 会去远端下载,使用 pnpm add b --workspace 会去本地的 wo
 ### 配置产物路径
 在 turbo.json 中配置任务编排。build 新增 math 打包产物的路径。确保其构建产物将被 Turborepo 缓存
 task.build.outputs: ['./dist/**']
+### 任务顺序
+"tasks": { "build": { "dependsOn": ["^build"]  } }
+执行当前包的build时，会先执行其依赖链所有包的build
+^ 前缀代表 "所有直接依赖的包"
+例：web项目依赖 @repo/ui ，那么会先build ui，再build web
+
+"test": {"dependsOn": ["build"]}
+执行当前包的test 前，先执行当前包的 build
+
+{ "tasks": { "lint": { "dependsOn": ["utils#build"] } } }
+执行 lint 之前，先执行 utils 包的 build 任务
+
+{ "tasks": { "web#lint": { "dependsOn": ["utils#build"] } } }
+执行 web 的 lint 前，先执行 utils 包的 build 任务
+
+"dependsOn": [] 
+无依赖关系
+
+"with": ["api#dev", "web#dev"]
+执行当前任务时，并行执行 with 里的任务
+
+### 缓存
+● 缓存
+"outputs": [".next/**", "!.next/cache/**"] 
+任务完成后，缓存指定文件或目录
+{ "tasks": { "spell-check": { "inputs": ["**/*.md", "**/*.mdx"] } } } 
+哈希方式指定监听文件或目录，文件变更缓存失效，任务会重新执行。默认是监听git跟踪的所有文件
+{ "tasks": { "build": { "inputs": ["$TURBO_DEFAULT$", "!README.md"] } } }
+默认监控 turbo 文件范围，！表示不监控的文件
+cache: false
+禁用缓存
+persistent: true
+跳过任务监控状态
+● turbo.json
+也可以放在其他子包内
+
+### 运行
+运行多个任务
+turbo run build test lint check-types
+按包执行
+turbo build --filter=@acme/web
+turbo run web#build docs#lint
+指定包及其依赖包执行
+turbo dev --filter=web...
+
+
+### 环境变量
+如果在构建期间.env更改了文件中的变量，任务可能会丢失缓存。所以需要将 .env 文件添加到inputs中。
+
+### CI 
+支持 Docker
+https://turbo.build/docs/crafting-your-repository/constructing-ci
+
+### 查看 monorepo 各包信息
+turbo ls
+turbo run
+turbo query
+
+### math 包 使用tsup 打包
+pnpm add tsup -D -w 在根目录安装
