@@ -100,5 +100,13 @@ pnpm up --recursive typescript@latest
 - 通过规则让所有包都依赖相同的版本
 turborepo syncpack、、manypkg和等工具sherif可用于此特定目的。
 ### 创建内部包
+packages/math
+packages.exports：为包定义多个入口点，以便它可以在其他包中使用（import { add } from '@repo/math'）
+- 将新的包安装在web
+pnpm add @repo/math -S --filter=web
+pnpm uninstall @repo/math -D --filter=web
+
+pnpm add pkg 会去远端下载,使用 pnpm add b --workspace 会去本地的 workspace 中下载，或在 package.json 中添加 "workspace:*"
+### 在 web 中使用 math 包
 
 
