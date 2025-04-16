@@ -82,3 +82,23 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/docs/reference/command-line-reference)
+
+## 步骤
+
+### 安装turbo
+- npm install turbo --global
+* install in repository
+- npm install turbo --save-dev
+### 使用脚手架 初始化turbo
+需要一个空目录
+pnpm dlx create-turbo@latest
+### 依赖管理
+- 指定包安装依赖
+pnpm install jest --save-dev --recursive --filter=web --filter=@repo/ui
+- 更新依赖项版本
+pnpm up --recursive typescript@latest
+- 通过规则让所有包都依赖相同的版本
+turborepo syncpack、、manypkg和等工具sherif可用于此特定目的。
+### 创建内部包
+
+
