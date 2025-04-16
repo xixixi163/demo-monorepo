@@ -1,7 +1,7 @@
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
-import { add } from '@yixixi/math/add';
+import { add } from '@yixixi/math';
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
