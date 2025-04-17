@@ -66,12 +66,12 @@ importers:
 
   apps/web:
     dependencies:
-      '@yixixi/math':
-        specifier: workspace:^
-        version: link:../../packages/math
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@yixixi/math':
+        specifier: workspace:*
+        version: link:../../packages/math
       next:
         specifier: ^15.3.0
         version: 15.3.0(@babel/core@7.26.10)(react-dom@19.1.0)(react@19.1.0)
