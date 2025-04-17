@@ -23,6 +23,7 @@ function Home() {
   return (
     <div className={styles.page}>
       Web
+      <div>{add(1, 2)}</div>
       <main className={styles.main}>
         <ThemeImage
           className={styles.logo}
@@ -102,7 +103,4 @@ function Home() {
     </div>
   );
 }
-function Page() {
-  return <div>{add(1, 2)}</div>
-}
-export default Page;
+export default Home;

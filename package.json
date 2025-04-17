@@ -8,7 +8,8 @@
     "test": "turbo run test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "publish-packages": "turbo run build --filter=@yixixi/math && changeset version && changeset publish"
+    "publish-packages": "turbo run build --filter=@yixixi/math && changeset version && changeset publish",
+    "version": "changeset version"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.1",
